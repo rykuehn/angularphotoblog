@@ -8,6 +8,12 @@ export class EntryService {
   constructor(private http: Http){
 
   }
+
+  addComment(entryId: number, comment: {name: string; comment: string;}){
+    this.http.post(`/app/enties/${entryId}/comments`, comment)
+        .toPromise();
+
+  }
   getEntries(): Promise<Entry[]>{
     return this.http.get('/app/entries')
                .toPromise()
